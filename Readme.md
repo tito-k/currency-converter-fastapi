@@ -2,10 +2,6 @@
 	Currency Converter REST API.
 </h1>
 
-![Github-A Build Status](https://github.com//Nyior/django-rest-paystack/actions/workflows/lint_and_test.yml/badge.svg)
-[![PyPI version](https://badge.fury.io/py/django-rest-paystack.svg)](https://badge.fury.io/py/django-rest-paystack)
-
-
 ## What is this about?
 It's a minimal REST API that helps you figure out how much  let's say a dollar is worth in naira at the moment or at some date in the past.
 
