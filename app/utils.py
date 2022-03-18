@@ -4,7 +4,10 @@ from .config import Settings
 
 
 async def currency_api_caller(settings: Settings, url: str, params: dict=None):
-    """ A helper function for calling the external APIs"""
+    """ 
+        A helper function for calling the external APIs
+        Moved the api-calling code to this separate function to separate concerns
+    """
     
     headers = {
         'x-rapidapi-key': settings.API_KEY

@@ -20,7 +20,7 @@ async def currency_converter_service(
     settings: Settings
 ):
     """ 
-    service for use in the currency_converter route handler.
+    Service for use in the currency_converter route handler.
     Houses all the currency conversion logic.
     """
 
