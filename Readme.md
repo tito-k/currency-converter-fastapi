@@ -25,4 +25,11 @@ There are three endpoints there that you could play around with:
 - `/currency-converter` -- for doing the main conversion
 - `/historical-data`-- for getting past and current exchange rates between currencies
 
-##
+## Running Tests
+Take the following steps to run the tests cases:
+- Install `pytest` -- `pip install pytest`
+- Strangely, I couldn't get Pytest to work without requests, so install it too-- `pip install requests`
+- Then run the command `pytest` in your root directory of this project. That would then run the test cases
+
+## Author
+Yours truly :)
