@@ -23,7 +23,7 @@ You'd be greeted with a nice auto-generated docs.
 There are three endpoints there that you could play around with:
 - `/supported-currencies`-- to see a list of all the currencies supported
 - `/currency-converter` -- for doing the main conversion
-- `/historical-data`-- for getting past and current exchange rates between currencies
+- `/historical-data`-- for getting past and current exchange rates between currencies. For this endpoint, `date` query param should be in this format: `year-month-day: 2020-01-20`
 
 ## Running Tests
 Take the following steps to run the tests cases:

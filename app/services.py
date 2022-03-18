@@ -10,6 +10,7 @@ import aiohttp
 
 from .enums import SupportedCurrencies
 from .config import Settings
+from .utils import currency_api_caller
 
 
 async def currency_converter_service(
@@ -22,34 +23,20 @@ async def currency_converter_service(
     service for use in the currency_converter route handler.
     Houses all the currency conversion logic.
     """
-    
-    headers = {
-        'x-rapidapi-key': settings.API_KEY
-    }
+
     URL = settings.EXCHANGE_URL
     query_params = {"from":from_currency, "to":to}
 
-    try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get(URL, headers=headers, params=query_params) as response:
-                conversion_rate = await response.text()
-                
-                converted_amount = amount * float(conversion_rate)
+    conversion_rate = await currency_api_caller(settings, URL, query_params)
+    converted_amount = amount * float(conversion_rate)
 
-                response = {
-                        "from_currency": from_currency,
-                        "to_currency": to,
-                        "amount": amount,
-                        "converted_amount": converted_amount
-                }
-                return response
-                
-    except Exception as e:
-        error = f"erro: {e}"
-        response = {
-                'error': error
-        } 
-        return response
+    response = {
+        "from_currency": from_currency,
+        "to_currency": to,
+        "amount": amount,
+        "converted_amount": converted_amount
+    }
+    return response
 
 
 async def historical_data_service(
@@ -62,33 +49,20 @@ async def historical_data_service(
     service for use in the currency_converter route handler.
     Houses all the currency conversion logic.
     """
-    
-    headers = {
-        'x-rapidapi-key': settings.API_KEY
-    }
+
     URL = settings.HISTORICAL_URL.format(date)
     query_params = {"from":from_currency, "to":to}
 
-    try:
-        async with aiohttp.ClientSession() as session:
-            async with session.get(URL, headers=headers, params=query_params) as response:
-                data = await response.json()
-                rate = data['rates'][to]['rate']
+    data = await currency_api_caller(settings, URL, query_params)
+    rate = data['rates'][to]['rate']
                 
-                response = {
-                        "from_currency": from_currency,
-                        "to_currency": to,
-                        "exchange_date": date,
-                        "rate_at_date": rate
-                }
-                return response
-                
-    except Exception as e:
-        error = f"erro: {e}"
-        response = {
-                'error': error
-        } 
-        return response
+    response = {
+        "from_currency": from_currency,
+        "to_currency": to,
+        "exchange_date": date,
+        "rate_at_date": rate
+    }
+    return response
 
 
 def supported_currencies_service():
