@@ -1,7 +1,7 @@
 """
 Each service function here is mapped to a request handler function
-in the main.py file. The goal with services is to foster single reponsibility:
-    - Each request handler in the main.py file would only accept a request and 
+in the api.py file. The goal with services is to foster single reponsibility:
+    - Each request handler in the api.py file would only accept a request and 
     return a response, and that only.
     - The task of processing a request is moved to services. Our business logic
     lives in the services module
