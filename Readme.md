@@ -17,5 +17,12 @@ The easiest way to get this project up and running locally is with Docker. You c
 - Run the command `docker run -p 80:80 --name c-converter-container c-converter-image` in the root directory of this project to spin up your container
 
 ## Acessing the Docs
-Once your Docker Container is fired up, point your browser to `http://localhost:8080/docs`.
+Once your Docker Container is fired up, point your browser to `http://localhost:80/docs`.
 You'd be greeted with a nice auto-generated docs. 
+
+There are three endpoints there that you could play around with:
+- `/supported-currencies`-- to see a list of all the currencies supported
+- `/currency-converter` -- for doing the main conversion
+- `/historical-data`-- for getting past and current exchange rates between currencies
+
+##
